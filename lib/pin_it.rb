@@ -8,11 +8,12 @@ end
 module PinIt
   module Helper
     def pin_it_button(options = {})
+      class_names = options[:class]
       query_params = options.slice(:url, :media, :description)
       img = tag :img, :src => "//assets.pinterest.com/images/PinExt.png", :title => "Pin It", :border => "0"
       content_tag :a, img, "href" => "#",
                                 "onClick" => "PinWindow=window.open('http://pinterest.com/pin/create/button/?#{query_params.to_query}','PinWindow','width=800, height=600'); return false;",
-                                "class" => "pin-it-button",
+                                "class" => "pin-it-button #{class_names}",
                                 "count-layout" => "vertical"
     end
 
